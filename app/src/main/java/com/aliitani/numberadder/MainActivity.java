@@ -5,9 +5,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.GridLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,15 +14,44 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    RelativeLayout title,Layout;
+    RelativeLayout title,Layout,settingsLayout;
+    GridLayout gameSettings;
     TextView timerScreen, scoreScreen, mathScreen, Square1,Square2,Square3,Square4, NumberView, titleText;
-    Button startButton, diffmode;
+    Button startButton, diffmode, settingsButton;
     String diff = "";
     int win = 0, lose = 0, total = 0, num1 = 0, num2 = 0, timerValue = 0;
     Random NumberGen = new Random();
     Random posGen = new Random();
     CountDownTimer timer;
 
+
+    public void setSettings(View view) {
+        settingsLayout = (RelativeLayout) findViewById(R.id.SettingsLayout);
+        title = (RelativeLayout) findViewById(R.id.TitleLayout);
+        gameSettings = (GridLayout) findViewById(R.id.gameSettings);
+        settingsButton = (Button) view;
+
+        if (settingsButton.getText().toString().equals("Settings")) {
+            title.setVisibility(View.GONE);
+            settingsLayout.setVisibility(View.VISIBLE);
+        }
+        if(settingsButton.getText().toString().equals("Set difficulty")) {
+            settingsButton = (Button) findViewById(R.id.difficultyGridLayout);
+            settingsButton.setVisibility(View.GONE);
+            if (gameSettings.getVisibility() == View.VISIBLE) {
+                gameSettings.setVisibility(View.GONE);
+            }else {
+                gameSettings.setVisibility(View.VISIBLE);
+            }
+        }
+        if (settingsButton.getText().toString().equals("Go Back")) {
+            gameSettings.setVisibility(View.GONE);
+            settingsButton = (Button) findViewById(R.id.difficultyGridLayout);
+            settingsButton.setVisibility(View.VISIBLE);
+            settingsLayout.setVisibility(View.GONE);
+            title.setVisibility(View.VISIBLE);
+        }
+    }
     public void GameRules(View view){
         scoreScreen = (TextView) findViewById(R.id.scoreBoard);
         NumberView = (TextView) view;
@@ -79,17 +107,22 @@ public class MainActivity extends AppCompatActivity {
     public void checkDiff(View view) {
         diffmode = (Button) view;
         System.out.println(diffmode.getText().toString());
+        Layout = (RelativeLayout) findViewById(R.id.WholeLayout);
+
         if (diffmode.getText().toString().equals("Easy")) {
             diff = "Easy";
-            timerValue = 30000;
+            System.out.println(diff);
+            timerValue = 30100;
         } else if(diffmode.getText().toString().equals("Medium")) {
             diff = "Medium";
-            timerValue = 40000;
+            timerValue = 40100;
         } else if(diffmode.getText().toString().equals("Hard")) {
             diff = "Hard";
-            timerValue = 50000;
+            timerValue = 50100;
         }
 
+        Snackbar snackbar = Snackbar.make(Layout, "Difficulty is set to: " + diff, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     public void timerFinish() {
@@ -97,25 +130,28 @@ public class MainActivity extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.startButton);
         titleText = (TextView) findViewById(R.id.Title);
         timerScreen = (TextView) findViewById(R.id.timerBoard);
+        scoreScreen = (TextView) findViewById(R.id.scoreBoard);
+        mathScreen = (TextView) findViewById(R.id.mathBoard);
 
         title.setVisibility(View.VISIBLE);
         startButton.setText("Play Again?");
         if (win > lose) {
-            titleText.setText("Greatjob!\n" + win + " right\n" + lose + "wrong!");
+            titleText.setText("Great job!\n" + win + " right\n" + lose + " wrong!");
         }
         if (win == lose) {
             titleText.setText("It's tie!\n" + win + " right\n" + lose + " wrong!");
         }
         if (lose > win) {
-            titleText.setText("You can do Better!\n" + win + " right\n" + lose + " wrong!");
+            titleText.setText("You can do better!\n" + win + " right\n" + lose + " wrong!");
         }
-        timerScreen.setText("30s");
+        timerScreen.setText("");
+        scoreScreen.setText("");
+        mathScreen.setText("");
         win = 0;
         lose = 0;
         total = 0;
         num1 = 0;
         num2 = 0;
-        diff = "";
 
     }
 
@@ -203,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
             snackbar.show();
         }else {
             title.setVisibility(View.GONE);
+            scoreScreen.setText("0/0");
             CountDownTimerMethod();
             OrderNumbers();
         }
