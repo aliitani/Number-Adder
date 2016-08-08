@@ -151,94 +151,6 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="false"
-        android:id="@+id/SettingsLayout"
-        android:background="#77e2ff"
-        android:onClick="setSettings"
-        android:layout_alignParentEnd="false"
-        android:visibility="gone"
-        android:clickable="true">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set difficulty"
-            android:id="@+id/difficultyGridLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="118dp"
-            android:background="#f49595"
-            android:onClick="setSettings"
-            android:padding="25dp"
-            android:visibility="visible"
-            android:textColor="#000000" />
-
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/gameSettings"
-            android:useDefaultMargins="false"
-            android:visibility="gone">
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Easy"
-                android:id="@+id/EasyMode"
-                android:onClick="checkDiff"
-                android:clickable="true"
-                android:background="#46a9d7"
-                android:padding="30dp"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:textColor="#000000" />
-
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Medium"
-                android:id="@+id/MediumMode"
-                android:nestedScrollingEnabled="false"
-                android:onClick="checkDiff"
-                android:clickable="true"
-                android:background="#46a9d7"
-                android:padding="30dp"
-                android:textSize="15dp"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Hard"
-                android:id="@+id/HardMode"
-                android:onClick="checkDiff"
-                android:clickable="true"
-                android:background="#46a9d7"
-                android:padding="30dp"
-                android:textSize="15dp"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-        </GridLayout>
-
-        <Button
-            android:text="Go Back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="45dp"
-            android:id="@+id/GoBack"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:background="@color/colorPrimary"
-            android:onClick="setSettings" />
-
-    </RelativeLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -277,5 +189,92 @@
         android:textColor="#000000"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/SettingsLayout"
+        android:background="#77e2ff"
+        android:onClick="setSettings"
+        android:visibility="gone"
+        android:clickable="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set difficulty"
+            android:id="@+id/difficultyGridLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="118dp"
+            android:background="#f49595"
+            android:onClick="setSettings"
+            android:padding="25dp"
+            android:visibility="visible"
+            android:textColor="#000000" />
+
+        <Button
+            android:text="Go Back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="45dp"
+            android:id="@+id/GoBack"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:onClick="setSettings" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gameSettings"
+            android:useDefaultMargins="false"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Easy"
+                android:id="@+id/EasyMode"
+                android:onClick="checkDiff"
+                android:clickable="true"
+                android:background="#46a9d7"
+                android:padding="30dp"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Medium"
+                android:id="@+id/MediumMode"
+                android:nestedScrollingEnabled="false"
+                android:onClick="checkDiff"
+                android:clickable="true"
+                android:background="#46a9d7"
+                android:padding="30dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="Hard"
+                android:id="@+id/HardMode"
+                android:onClick="checkDiff"
+                android:clickable="true"
+                android:background="#46a9d7"
+                android:padding="30dp"
+                android:textSize="15dp"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+        </GridLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

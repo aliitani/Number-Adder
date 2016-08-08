@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
         if(settingsButton.getText().toString().equals("Set difficulty")) {
             settingsButton = (Button) findViewById(R.id.difficultyGridLayout);
             settingsButton.setVisibility(View.GONE);
-            if (gameSettings.getVisibility() == View.VISIBLE) {
+            if (gameSettings.getVisibility() == view.VISIBLE) {
                 gameSettings.setVisibility(View.GONE);
-            }else {
+            }
+            if (gameSettings.getVisibility() == view.GONE){
                 gameSettings.setVisibility(View.VISIBLE);
             }
         }
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             title.setVisibility(View.VISIBLE);
         }
     }
+
     public void GameRules(View view){
         scoreScreen = (TextView) findViewById(R.id.scoreBoard);
         NumberView = (TextView) view;
